@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence-unit name="pu">
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+            <property name="javax.persistence.jdbc.user" value="hr" />
+            <property name="javax.persistence.jdbc.password" value="hr123" />
+            <property name="hibernate.show_sql" value="true"/>
+            <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect" /> -->
+	    	<property name="hibernate.hbm2ddl.auto" value="update"/>
+            
+        </properties>
+    </persistence-unit>
