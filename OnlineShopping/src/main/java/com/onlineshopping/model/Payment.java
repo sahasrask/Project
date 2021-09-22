@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class PaymentDetails {
+public class Payment {
 	
 	@Id
 	@SequenceGenerator(name="payment_seq",initialValue = 1,allocationSize = 1)
@@ -24,11 +24,11 @@ public class PaymentDetails {
 	
 	
 	
-	public PaymentDetails() {
+	public Payment() {
 		super();
 	}
 
-	public PaymentDetails(int paymentId, TransactionType transactionType, Order order) {
+	public Payment(int paymentId, TransactionType transactionType, Order order) {
 		super();
 		this.paymentId = paymentId;
 		this.transactionType = transactionType;
