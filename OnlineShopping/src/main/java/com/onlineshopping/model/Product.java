@@ -15,7 +15,7 @@ public class Product {
 	int productId;
 	String name;
 	int productRating;
-	int qunatity;
+	int quantity;
 	String description;
 	String imageURL;
 	String category;
