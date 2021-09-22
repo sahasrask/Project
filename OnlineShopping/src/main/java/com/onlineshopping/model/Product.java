@@ -1,5 +1,6 @@
 package com.onlineshopping.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -7,24 +8,58 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+@Entity
 public class Product {
 	
 	@Id
 	@SequenceGenerator(name="product_seq",initialValue = 1,allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "product_seq")
 	int productId;
-	String name;
+	String productName;
 	int productRating;
 	int quantity;
 	String description;
+	int productQuantity;
+	String productDescription;
 	String imageURL;
-	String category;
-	int price;
+	String productCategory;
+	int productPrice;
+	
+
+	@ManyToOne
+	@JoinColumn(name="orderId")
+	Order order;
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "userId")
-	User user;
+	@JoinColumn(name="cartId")
+	Cart cart;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="retailerId")
+	Retailer retailer;
+	
+	
+
+	public Product() {
+	}
+
+
+	public Product(int productId, String productName, int productRating, int productQunatity, String productDescription,
+			String imageURL, String productCategory, int productPrice, Order order, Cart cart, Retailer retailer) {
+		this.productId = productId;
+		this.productName = productName;
+		this.productRating = productRating;
+		this.productQuantity = productQunatity;
+		this.productDescription = productDescription;
+		this.imageURL = imageURL;
+		this.productCategory = productCategory;
+		this.productPrice = productPrice;
+		this.order = order;
+		this.cart = cart;
+		this.retailer = retailer;
+	}
 
 
 	public int getProductId() {
@@ -37,13 +72,13 @@ public class Product {
 	}
 
 
-	public String getName() {
-		return name;
+	public String getProductName() {
+		return productName;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 
@@ -57,23 +92,23 @@ public class Product {
 	}
 
 
-	public int getQunatity() {
-		return qunatity;
+	public int getProductQunatity() {
+		return productQuantity;
 	}
 
 
-	public void setQunatity(int qunatity) {
-		this.qunatity = qunatity;
+	public void setProductQunatity(int productQunatity) {
+		this.productQuantity = productQunatity;
 	}
 
 
-	public String getDescription() {
-		return description;
+	public String getProductDescription() {
+		return productDescription;
 	}
 
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
 	}
 
 
@@ -87,34 +122,58 @@ public class Product {
 	}
 
 
-	public String getCategory() {
-		return category;
+	public String getProductCategory() {
+		return productCategory;
 	}
 
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
 	}
 
 
-	public int getPrice() {
-		return price;
+	public int getProductPrice() {
+		return productPrice;
 	}
 
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
 	}
 
 
-	public User getUser() {
-		return user;
+	public Order getOrder() {
+		return order;
 	}
 
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
+
+
+	public Cart getCart() {
+		return cart;
+	}
+
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+
+	public Retailer getRetailer() {
+		return retailer;
+	}
+
+
+	public void setRetailer(Retailer retailer) {
+		this.retailer = retailer;
+	}
+
+	
+	
+	
 	
 	
 	

@@ -1,14 +1,18 @@
 package com.onlineshopping.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="user_prj")
@@ -25,7 +29,29 @@ public class User {
 	String password;
 	
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-	Product product;
+	List<Order> orders;
+	
+	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+	Cart cart;
+	
+	
+
+	public User() {
+		super();
+	}
+
+	public User(int user_id, String firstName, String lastName, String mobile, String email, String password,
+			List<Order> orders, Cart cart) {
+		super();
+		this.user_id = user_id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.mobile = mobile;
+		this.email = email;
+		this.password = password;
+		this.orders = orders;
+		this.cart = cart;
+	}
 
 	public int getUser_id() {
 		return user_id;
@@ -75,13 +101,9 @@ public class User {
 		this.password = password;
 	}
 
-	public Product getProduct() {
-		return product;
-	}
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+
+	
 	
 	
 	
