@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -19,7 +20,7 @@ public class Order {
 	@SequenceGenerator(name="order_seq",initialValue = 1,allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "order_seq")
 	int orderId;
-	double total;
+	double totalOrderAmount;
 	OrderStatus orderStatus;
 	
 	@OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
@@ -28,6 +29,78 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name="userId")
 	User user;
+	
+	@OneToOne(mappedBy = "order",cascade = CascadeType.ALL)
+	PaymentDetails paymentDetails;
+
+	
+	
+	
+	
+	
+	public Order() {
+		super();
+	}
+
+	public Order(int orderId, double totalOrderAmount, OrderStatus orderStatus, List<Product> products, User user,
+			PaymentDetails paymentDetails) {
+		super();
+		this.orderId = orderId;
+		this.totalOrderAmount = totalOrderAmount;
+		this.orderStatus = orderStatus;
+		this.products = products;
+		this.user = user;
+		this.paymentDetails = paymentDetails;
+	}
+
+	public int getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+
+	public double getTotalOrderAmount() {
+		return totalOrderAmount;
+	}
+
+	public void setTotalOrderAmount(double totalOrderAmount) {
+		this.totalOrderAmount = totalOrderAmount;
+	}
+
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public PaymentDetails getPaymentDetails() {
+		return paymentDetails;
+	}
+
+	public void setPaymentDetails(PaymentDetails paymentDetails) {
+		this.paymentDetails = paymentDetails;
+	}
+	
 	
 	
 	

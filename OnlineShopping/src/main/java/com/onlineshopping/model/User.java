@@ -31,7 +31,27 @@ public class User {
 	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	List<Order> orders;
 	
+	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+	Cart cart;
 	
+	
+
+	public User() {
+		super();
+	}
+
+	public User(int user_id, String firstName, String lastName, String mobile, String email, String password,
+			List<Order> orders, Cart cart) {
+		super();
+		this.user_id = user_id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.mobile = mobile;
+		this.email = email;
+		this.password = password;
+		this.orders = orders;
+		this.cart = cart;
+	}
 
 	public int getUser_id() {
 		return user_id;
