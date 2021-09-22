@@ -22,7 +22,7 @@ public class Cart {
 	int cartQuantity;
 	int cartTotalAmount;
 	
-	@OneToOne
+	@OneToOne   
 	@JoinColumn(name="userId")
 	User user;
 	
