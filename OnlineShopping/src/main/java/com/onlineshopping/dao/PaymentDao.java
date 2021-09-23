@@ -4,4 +4,6 @@ import com.onlineshopping.model.Payment;
 
 public interface PaymentDao {
 	
+	
+	
 }

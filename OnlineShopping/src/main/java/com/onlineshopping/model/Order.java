@@ -31,7 +31,7 @@ public class Order {
 	User user;
 	
 	@OneToOne(mappedBy = "order",cascade = CascadeType.ALL)
-	PaymentDetails paymentDetails;
+	Payment payment;
 
 	
 	
@@ -43,14 +43,14 @@ public class Order {
 	}
 
 	public Order(int orderId, double totalOrderAmount, OrderStatus orderStatus, List<Product> products, User user,
-			PaymentDetails paymentDetails) {
+			Payment paymentDetails) {
 		super();
 		this.orderId = orderId;
 		this.totalOrderAmount = totalOrderAmount;
 		this.orderStatus = orderStatus;
 		this.products = products;
 		this.user = user;
-		this.paymentDetails = paymentDetails;
+		this.payment = paymentDetails;
 	}
 
 	public int getOrderId() {
@@ -93,12 +93,12 @@ public class Order {
 		this.user = user;
 	}
 
-	public PaymentDetails getPaymentDetails() {
-		return paymentDetails;
+	public Payment getPaymentDetails() {
+		return payment;
 	}
 
-	public void setPaymentDetails(PaymentDetails paymentDetails) {
-		this.paymentDetails = paymentDetails;
+	public void setPaymentDetails(Payment paymentDetails) {
+		this.payment = paymentDetails;
 	}
 	
 	
