@@ -22,9 +22,7 @@ public class Admin {
 	String adminEmail;
 	String adminPassword;
 	
-	
-	
-	
+//	@OneToMany()
 	
 	public Admin() {
 		super();

@@ -21,6 +21,7 @@ public class Cart {
 	int cartId;
 	int cartQuantity;
 	int cartTotalAmount;
+	boolean available=true;
 	
 	@OneToOne   
 	@JoinColumn(name="userId")
@@ -37,15 +38,18 @@ public class Cart {
 	public Cart() {
 		super();
 	}
-
-	public Cart(int cartId, int cartQuantity, int cartTotalAmount, User user, List<Product> products) {
+	
+	public Cart(int cartId, int cartQuantity, int cartTotalAmount, boolean available, User user,
+			List<Product> products) {
 		super();
 		this.cartId = cartId;
 		this.cartQuantity = cartQuantity;
 		this.cartTotalAmount = cartTotalAmount;
+		this.available = available;
 		this.user = user;
 		this.products = products;
 	}
+
 
 	public int getCartId() {
 		return cartId;
@@ -85,6 +89,14 @@ public class Cart {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
 	
 	

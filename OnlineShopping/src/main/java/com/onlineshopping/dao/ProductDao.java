@@ -8,6 +8,7 @@ import com.onlineshopping.model.Product;
 public interface ProductDao {
 	Product findProductById(int productId);
 	List<Product> viewAllProducts();
+	Product addToCart(Product product);
 	List<Product> viewProductsByCategory(String productCategory);
 	List<Product> viewProductByPrice(int productPrice);
 	List<Product> viewProductsByRating(int productRating);
